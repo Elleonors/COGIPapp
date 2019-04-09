@@ -11,14 +11,12 @@
             background-image: url("assets/img/landing-page.jpg");
             background-repeat: no-repeat;
             background-size: cover;
-        } #container {
+        } 
+        #container {
             margin-top: 30vh;
             height: 40vh;
             margin-bottom: 30vh;
             background-color: rgba(37, 146, 120, 0.5);
-        } p, input {
-            height: 20%;
-            margin-bottom: 1px;
         }
     </style>
     <title>COGIP APP</title>
@@ -29,13 +27,7 @@
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-12" id="container">
-                        <form action="connexion.php" method="post">
-                            Pseudo: <input type="text" name="pseudo" value="" />
-                            
-                            Mot de passe: <input type="password" name="mdp" value="" />
-                            
-                            <input type="submit" name="connexion" value="Connexion" />
-                        </form>
+                        <p>you've been connected you fabulous bro</p>
                     </div>
                 </div>
             </div>
