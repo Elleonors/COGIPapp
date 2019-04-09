@@ -9,7 +9,7 @@ if(isset($_POST['connexion'])) {
         } else {
             $Pseudo = htmlentities($_POST['pseudo'], ENT_QUOTES, "ISO-8859-1");
             $MotDePasse = htmlentities($_POST['mdp'], ENT_QUOTES, "ISO-8859-1");
-            $mysqli = mysqli_connect("localhost", "elleonors", "BEcode2019", "connexion");
+            $mysqli = mysqli_connect("localhost", "elleonors", "BEcode2019", "COGIP");
             if(!$mysqli){
                 echo "Erreur de connexion à la base de données.";
             } else {
@@ -18,7 +18,7 @@ if(isset($_POST['connexion'])) {
                     echo "Le pseudo ou le mot de passe est incorrect, le compte n'a pas été trouvé.";
                 } else {
                     $_SESSION['pseudo'] = $Pseudo;
-                    header("pages/main.php");;
+                    header("location:pages/main.php");
                 }
             }
         }

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         body {
-            background-image: url("assets/img/landing-page.jpg");
+            background-image: url("../assets/img/landing-page.jpg");
             background-repeat: no-repeat;
             background-size: cover;
         } 
@@ -27,7 +27,8 @@
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-12" id="container">
-                        <p>you've been connected you fabulous bro</p>
+                        <p class="text-center">you've been connected you fabulous bro</p>
+                        <?php echo $_SESSION ?>
                     </div>
                 </div>
             </div>
