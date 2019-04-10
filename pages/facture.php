@@ -57,7 +57,7 @@ $resultat->closeCursor();
                                 <?php
                                     foreach ($facture as $value) { ?>
                                         <div class="row">
-                                            <div class="col-md-12">  <!-- select date from facture -->
+                                            <div class="col-md-12">
                                                 <p> <?=$value['date']?> </p>
                                             </div>
                                         </div>
@@ -65,20 +65,24 @@ $resultat->closeCursor();
                             </div>
                             <div class="col-md-4">
                                 <h2>NOM-DE-SOCIETE</h2>
-                                    <?php
+                                <?php
                                     foreach ($societe as $value) { ?>
-                                        <div class="col-md-12">  <!-- select nom from societe -->
-                                            <p> <?=$value['nom']?> </p>        
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p> <?=$value['nom']?> </p>        
+                                            </div>
                                         </div>
-                                    <?php } ?>
+                                <?php } ?>
                             </div>
                             <div class="col-md-4">
                                 <h2>NUMERO DE FACTURE</h2>
                                 <?php
-                                foreach ($facture as $value) { ?>
-                                    <div class="col-md-2">  <!-- select numero from facture -->
-                                        <p> <?=$value['numero']?> </p>
-                                    </div>
+                                    foreach ($facture as $value) { ?>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p> <?=$value['numero']?> </p>
+                                            </div>
+                                        </div>
                                 <?php } ?>
                             </div> 
                         </div>
