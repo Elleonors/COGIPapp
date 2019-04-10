@@ -9,7 +9,7 @@ if(isset($_POST['connexion'])) {
         } else {
             $Pseudo = htmlentities($_POST['pseudo'], ENT_QUOTES, "ISO-8859-1");
             $MotDePasse = htmlentities($_POST['mdp'], ENT_QUOTES, "ISO-8859-1");
-            $mysqli = mysqli_connect("localhost", "root", "root", "COGIP");
+            $mysqli = mysqli_connect("localhost", "elleonors", "BEcode2019", "COGIP");
             if(!$mysqli){
                 echo "Erreur de connexion à la base de données.";
             } else {

@@ -1,7 +1,7 @@
 <?php
 try {
 	// On se connecte à MySQL
-	$bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'root', 'root');
+	$bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'elleonors', 'BEcode2019');
 }
 catch(Exception $e) {
 	// En cas d'erreur, on affiche un message et on arrête tout
@@ -103,7 +103,7 @@ while ($donnees = $resultat->fetchAll()){
                 <div class="col-md-4">
                     <div class="row">
                         <div class="offset-1 col-md-10 text-center">
-                        <a href="factures.php" target="_blank" class="text-center"><input type="button" value="FACTURES"></a>
+                        <a href="facture.php" target="_blank" class="text-center"><input type="button" value="FACTURE"></a>
                         </div>
                         <?php
                         foreach ($facture as $value) { ?>

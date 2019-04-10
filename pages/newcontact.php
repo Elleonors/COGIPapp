@@ -36,7 +36,7 @@
         <div class="container">
             <div class="row">
                 <div class="offset-4 col-md-4 text-center">
-                    <img src="../assets/img/cogip.png">
+                    <a href="main.php"><img src="../assets/img/cogip.png" alt="cogip icon"></a>
                 </div>
             </div>
             <div class="row">
