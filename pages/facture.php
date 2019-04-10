@@ -80,10 +80,7 @@ $resultat->closeCursor();
                                         <p> <?=$value['numero']?> </p>
                                     </div>
                                 <?php } ?>
-                            </div>
-                        </div>
-                            
-                            
+                            </div> 
                         </div>
                     </div>
                 </div>
