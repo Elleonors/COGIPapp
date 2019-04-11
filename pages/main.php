@@ -32,7 +32,7 @@ while ($donnees = $resultat->fetchAll()){
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="icon" type="image/png" href="assets/img/cogip.ico" />
+        <link rel="icon" type="image/png" href="../assets/img/favicon.ico" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <style>
             h1 {
@@ -58,7 +58,7 @@ while ($donnees = $resultat->fetchAll()){
                 margin-bottom: 3vh;
             }
         </style>
-        <title>COGIP APP</title>
+        <title>Cogip</title>
     </head>
     <body>
         <div class="container">
@@ -77,7 +77,7 @@ while ($donnees = $resultat->fetchAll()){
                 <div class="col-md-4">
                     <div class="row">
                         <div class="offset-1 col-md-10 text-center">
-                        <a href="annuaire.php" target="_blank" class="text-center"><input type="button" value="ANNUAIRE"></a>
+                        <a href="annuaire.php" class="text-center"><input type="button" value="ANNUAIRE"></a>
                         </div>
                         <?php
                         foreach ($societaires as $value) { ?>
@@ -90,7 +90,7 @@ while ($donnees = $resultat->fetchAll()){
                 <div class="col-md-4">
                     <div class="row">
                         <div class="offset-1 col-md-10 text-center">
-                        <a href="societe.php" target="_blank" class="text-center"><input type="button" value="SOCIETE"></a>
+                        <a href="societe.php" class="text-center"><input type="button" value="SOCIETE"></a>
                         </div>
                         <?php
                         foreach ($societe as $value) { ?>
@@ -103,7 +103,7 @@ while ($donnees = $resultat->fetchAll()){
                 <div class="col-md-4">
                     <div class="row">
                         <div class="offset-1 col-md-10 text-center">
-                        <a href="facture.php" target="_blank" class="text-center"><input type="button" value="FACTURE"></a>
+                        <a href="facture.php" class="text-center"><input type="button" value="FACTURE"></a>
                         </div>
                         <?php
                         foreach ($facture as $value) { ?>
@@ -116,19 +116,19 @@ while ($donnees = $resultat->fetchAll()){
             </div>
             <div class="row">
                 <div class="offset-4 col-md-4 text-center">
-                    <a href="client.php" target="_blank" class="text-center"><input type="button" value="Client"></a>
-                    <a href="fournisseur.php" target="_blank" class="text-center"><input type="button" value="Fournisseur"></a>
+                    <a href="client.php" class="text-center"><input type="button" value="Client"></a>
+                    <a href="fournisseur.php" class="text-center"><input type="button" value="Fournisseur"></a>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4 text-center">
-                    <a href="newcontact.php" target="_blank" class="text-center"><input type="button" value="+ Contact"></a>
+                    <a href="newcontact.php" class="text-center"><input type="button" value="+ Contact"></a>
                 </div>
                 <div class="col-md-4 text-center">
-                    <a href="newsociete.php" target="_blank" class="text-center"><input type="button" value="+ Société"></a>
+                    <a href="newsociete.php" class="text-center"><input type="button" value="+ Société"></a>
                 </div>
                 <div class="col-md-4 text-center">
-                    <a href="newfacture.php" target="_blank" class="text-center"><input type="button" value="+ Facture"></a>
+                    <a href="newfacture.php" class="text-center"><input type="button" value="+ Facture"></a>
                 </div>
             </div>
         </div>

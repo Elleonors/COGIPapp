@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/png" href="assets/img/cogip.ico" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.ico" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         body {
@@ -19,9 +19,10 @@
         } p, input {
             height: 20%;
             margin-bottom: 1px;
+            margin-top: 2vh;
         }
     </style>
-    <title>COGIP APP</title>
+    <title>login to cogip...</title>
 </head>
 <body>
     <div class="container">
@@ -29,12 +30,12 @@
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-12" id="container">
-                        <form action="connexion.php" method="post">
-                            Pseudo: <input type="text" name="pseudo" value="" />
-                            
-                            Mot de passe: <input type="password" name="mdp" value="" />
-                            
-                            <input type="submit" name="connexion" value="Connexion" />
+                        <form action="connexion.php" method="post" class="text-center">
+                            <div id="inputcontainer">
+                                <p>Pseudo: </p><input type="text" name="pseudo" value="" />
+                                <p>Mot de passe: </p><input type="password" name="mdp" value="" /></br>
+                                <input type="submit" name="connexion" value="Connexion" />
+                            </div>
                         </form>
                     </div>
                 </div>
