@@ -1,12 +1,16 @@
 <?php
 try {
-	$bdd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'elleonors', 'BEcode2019');
-} catch(Exception $e) {
-        die('Erreur : '.$e->getMessage());
+	// On se connecte à MySQL
+	$bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'root', 'root');
 }
-$resultat = $bdd->query('SELECT * FROM facture');
-$facture = $resultat->fetchAll();
-$resultat = $bdd->query('SELECT * FROM societe');
+catch(Exception $e) {
+	// En cas d'erreur, on affiche un message et on arrête tout
+    die('Erreur : '.$e->getMessage());
+}
+
+$resultat = $bd->query('SELECT * FROM societaires');
+$societaire = $resultat->fetchAll();
+$resultat = $bd->query('SELECT * FROM societe');
 $societe = $resultat->fetchAll();
 $resultat->closeCursor();
 ?>
@@ -19,7 +23,11 @@ $resultat->closeCursor();
     <link rel="icon" type="image/png" href="../assets/img/favicon.ico" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
-        body {
+        h2 {
+            text-align: center;
+            margin-top: 3vh;
+            margin-bottom: 5vh;
+        } body {
             background-image: url("../assets/img/landing-page.jpg");
             background-repeat: no-repeat;
             background-size: cover;
@@ -51,41 +59,41 @@ $resultat->closeCursor();
                 </div>
                 <div class="row">
                     <div class="offset-md-5 col-md-2 text-center">
-                        <h2>Sociétés</h2>
+                        <h2>SOCIÉTÉS</h2>
                     </div>
                 </div>
-                <div class="row text-center" id="container">
+                <div class="row text-center">
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-4">
-                                <h2>DATE</h2>
-                                <?php
-                                    foreach ($facture as $value) { ?>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <p> <?=$value['date']?> </p>
-                                            </div>
-                                        </div>
-                                <?php } ?>
-                            </div>
-                            <div class="col-md-4">
-                                <h2>NOM-DE-SOCIETE</h2>
+                                <h3>NOM</h3>
                                 <?php
                                     foreach ($societe as $value) { ?>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <p> <a href="detailsociete.php/<?=$value['nom']?>"><?=$value['nom']?></a> </p>        
+                                                <p> <?=$value['nom']?> </p>
                                             </div>
                                         </div>
                                 <?php } ?>
                             </div>
                             <div class="col-md-4">
-                                <h2>NUMERO DE FACTURE</h2>
+                                <h3>PAYS</h3>
                                 <?php
-                                    foreach ($facture as $value) { ?>
+                                    foreach ($societe as $value) { ?>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <p> <a href="detailfacture.php/<?=$value['numero']?>"><?=$value['numero']?></a> </p>
+                                                <p> <?=$value['pays']?> </p>
+                                            </div>
+                                        </div>
+                                <?php } ?>
+                            </div>
+                            <div class="col-md-4">
+                                <h3>TVA</h3>
+                                <?php
+                                    foreach ($societe as $value) { ?>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p> <?=$value['tva']?> </p>
                                             </div>
                                         </div>
                                 <?php } ?>
