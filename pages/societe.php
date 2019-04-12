@@ -59,7 +59,7 @@ $resultat->closeCursor();
                 </div>
                 <div class="row">
                     <div class="offset-md-5 col-md-2 text-center">
-                        <h2>SOCIÉTÉS</h2>
+                        <h2>Sociétés</h2>
                     </div>
                 </div>
                 <div class="row text-center">

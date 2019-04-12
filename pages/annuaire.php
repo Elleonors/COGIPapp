@@ -42,7 +42,7 @@ $resultat->closeCursor();
             margin-top : 5vh;
         }
     </style>
-    <title>Annuaires</title>
+    <title>Annuaire</title>
 </head>
 <body>
     <div class="container">
