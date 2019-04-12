@@ -1,17 +1,12 @@
 <?php
 try {
-	// On se connecte à MySQL
-	$bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
-}
-catch(Exception $e) {
-	// En cas d'erreur, on affiche un message et on arrête tout
+	$bdd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
+} catch(Exception $e) {
+
     die('Erreur : '.$e->getMessage());
 }
-
-$resultat = $bd->query('SELECT * FROM societaires');
-$societaire = $resultat->fetchAll();
-$resultat = $bd->query('SELECT * FROM societe');
-$societe = $resultat->fetchAll();
+$resultat = $bdd->query('SELECT societaires.nom , societaires.prenom , societe.nomdesociete  FROM societaires INNER JOIN societe ON societe_idsociete = idsociete');
+$result = $resultat->fetchAll();
 $resultat->closeCursor();
 ?>
 <!DOCTYPE html>
@@ -68,10 +63,10 @@ $resultat->closeCursor();
                             <div class="col-md-4">
                                 <h3>NOM</h3>
                                 <?php
-                                    foreach ($societaire as $value) { ?>
+                                    foreach ($result as $value) { ?>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <p> <?=$value['nom']?> </p>
+                                                <p> <a href="detailcontact.php?nom=<?=$value['nom']?>"><?=$value['nom']?></a> </p>
                                             </div>
                                         </div>
                                 <?php } ?>
@@ -79,10 +74,12 @@ $resultat->closeCursor();
                             <div class="col-md-4">
                                 <h3>PRÉNOM</h3>
                                 <?php
-                                    foreach ($societaire as $value) { ?>
+
+                                    foreach ($result as $value) { ?>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <p> <?=$value['prenom']?> </p>
+                                                <p> <a href="detailcontact.php?prenom=<?=$value['prenom']?>"><?=$value['prenom']?></a> </p>
+
                                             </div>
                                         </div>
                                 <?php } ?>
@@ -90,10 +87,10 @@ $resultat->closeCursor();
                             <div class="col-md-4">
                                 <h3>NOM-DE-SOCIETE</h3>
                                 <?php
-                                    foreach ($societe as $value) { ?>
+                                    foreach ($result as $value) { ?>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <p> <a href="detailsociete.php/<?=$value['nom']?>"><?=$value['nom']?></a> </p>        
+                                                <p> <a href="detailsociete.php?nomdesociete=<?=$value['nomdesociete']?>"><?=$value['nomdesociete']?></a> </p>        
                                             </div>
                                         </div>
                                 <?php } ?>

@@ -1,30 +1,25 @@
 <?php
 try {
-    // Se connecter à MySQL
-    $bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
-}
-catch(Exception $e) {
-    // En cas d'erreur, on affiche un message et on arrête tout
+    $bdd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
+} catch(Exception $e) {
     die('Erreur : '.$e->getMessage());
 }
-// Insertion d'un message avec une requête
 if(isset($_GET['add'])) {
-    $req = $bd->prepare('INSERT INTO facture (numero, `date`, prestation, societe_idsociete, societaires_idsocietaires) VALUES (?, ?, ?, ?, ?)');
+    $req = $bdd->prepare('INSERT INTO facture (numero, `date`, prestation, societe_idsociete, societaires_idsocietaires) VALUES (?, ?, ?, ?, ?)');
     $req->execute(array($_GET['numero'], $_GET['date'], $_GET['presta'], $_GET['societe'], $_GET['societaires']));
     header('Location: newfacture.php');
 }
 // On récupère le contenu de la table societe
-$resultat = $bd->query('SELECT * FROM societe');
+$resultat = $bdd->query('SELECT * FROM societe');
 while ($donnees = $resultat->fetchAll()){
     $societe = $donnees;
 }
 // On récupère le contenu de la table societaire
-$resultat = $bd->query('SELECT * FROM societaires');
+$resultat = $bdd->query('SELECT * FROM societaires');
 while ($donnees = $resultat->fetchAll()){
     $societaires = $donnees;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
     <head>

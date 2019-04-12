@@ -1,25 +1,18 @@
 <?php
 try {
-	// Se connecter à MySQL
-	$bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
-}
-catch(Exception $e) {
-	// En cas d'erreur, on affiche un message et on arrête tout
+	$bdd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
+} catch(Exception $e) {
     die('Erreur : '.$e->getMessage());
 }
-// Insertion d'un message avec une requête
 if(isset($_GET['add'])) {
-    $req = $bd->prepare('INSERT INTO societaires (nom, prenom, email, telephone, societe_idsociete) VALUES (?, ?, ?, ?, ?)');
+    $req = $bdd->prepare('INSERT INTO societaires (nom, prenom, email, telephone, societe_idsociete) VALUES (?, ?, ?, ?, ?)');
     $req->execute(array($_GET['nom'], $_GET['prenom'], $_GET['email'], $_GET['telephone'], $_GET['societe']));
     header('Location: newcontact.php');
 }
-// On récupère le contenu de la table societe
-$resultat = $bd->query('SELECT * FROM societe');
-while ($donnees = $resultat->fetchAll()){
-    $societe = $donnees;
-}
+$resultat = $bdd->query('SELECT * FROM societe');
+$donnees = $resultat->fetchAll();
+$societe = $donnees;
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
     <head>

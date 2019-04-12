@@ -1,36 +1,25 @@
 <?php
 try {
-	// On se connecte à MySQL
-	$bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
-}
-catch(Exception $e) {
-	// En cas d'erreur, on affiche un message et on arrête tout
+
+	$bdd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
+} catch(Exception $e) {
     die('Erreur : '.$e->getMessage());
 }
-// On récupère le contenu de la table societaires
-$resultat = $bd->query('SELECT * FROM societaires
-ORDER BY idsocietaires DESC
-LIMIT 5');
-while ($donnees = $resultat->fetchAll()){
-    $societaires = $donnees;
-}
+$resultat = $bdd->query('SELECT * FROM societaires ORDER BY idsocietaires DESC LIMIT 5');
+$donnees = $resultat->fetchAll();
+$societaires = $donnees;
+$resultat = $bdd->query('SELECT * FROM societe ORDER BY idsociete DESC LIMIT 5');
+$donnees = $resultat->fetchAll();
+$societe = $donnees;
+$resultat = $bdd->query('SELECT * FROM facture ORDER BY idfacture DESC LIMIT 5');
+$donnees = $resultat->fetchAll();
+$facture = $donnees;
 
-// On récupère le contenu de la table societe
-$resultat = $bd->query('SELECT * FROM societe
-ORDER BY idsociete DESC
-LIMIT 5');
-while ($donnees = $resultat->fetchAll()){
-    $societe = $donnees;
-}
-
-// On récupère le contenu de la table facture
-$resultat = $bd->query('SELECT * FROM facture
-ORDER BY idfacture DESC
-LIMIT 5');
-while ($donnees = $resultat->fetchAll()){
-    $facture = $donnees;
-}
-$resultat->closeCursor();
+// Si l'on veut faire des Liens entre les affichages, poser CECI | Et afficher 
+//                                                               V
+// $resultat = $bdd->query('SELECT societaires.nom, societe.nomdesociete, facture.numero FROM facture INNER JOIN societe ON societe_idsociete = idsociete INNER JOIN societaires ON societaires_idsocietaires = idsocietaires ORDER BY idsociete DESC LIMIT 5');
+// $result = $resultat->fetchAll();
+// $resultat->closeCursor();
 ?>
 
 <!DOCTYPE html>
@@ -52,8 +41,7 @@ $resultat->closeCursor();
                 background-size: cover;
             } img {
                 height: 15vh;
-            } /*#container {
-                height: 40vh;
+            } #container {
                 background-color: rgba(37, 146, 120, 0.5);
             }*/ .container {
                 padding-top: 2vh;
@@ -79,7 +67,6 @@ $resultat->closeCursor();
                     <h1>BONJOUR, JEAN-CHRISTIAN</h1>
                 </div>
             </div>
-            
             <div class="row">
                 <div class="col-md-4">
                     <div class="row">
@@ -102,7 +89,7 @@ $resultat->closeCursor();
                         <?php
                         foreach ($societe as $value) { ?>
                             <div class="offset-1 col-md-10 text-center" id="container">
-                                <?php echo $value ['nom'] ?>
+                                <?php echo $value ['nomdesociete'] ?>
                             </div>
                         <?php } ?>
                     </div>
@@ -110,11 +97,8 @@ $resultat->closeCursor();
                 <div class="col-md-4">
                     <div class="row">
                         <div class="offset-1 col-md-10 text-center">
-<<<<<<< HEAD
-                        <a href="facture.php" target="_blank" class="text-center"><input type="button" value="FACTURES"></a>
-=======
+                        <a href="facture.php" class="text-center"><input type="button" value="FACTURES"></a>
                         <a href="factures.php" class="text-center"><input type="button" value="FACTURES"></a>
->>>>>>> d2d10f61e4c96f627e56b7e62058974d55054477
                         </div>
                         <?php
                         foreach ($facture as $value) { ?>
