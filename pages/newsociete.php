@@ -1,13 +1,9 @@
 <?php
 try {
-    // Se connecter à MySQL
-    $bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'root', 'root');
-}
-catch(Exception $e) {
-    // En cas d'erreur, on affiche un message et on arrête tout
+    $bdd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
+} catch(Exception $e) {
     die('Erreur : '.$e->getMessage());
 }
-// Insertion d'un message avec une requête
 if(isset($_GET['add'])) {
     $req = $bd->prepare('INSERT INTO societe (nom, tva, pays) VALUES (?, ?, ?)');
     $req->execute(array($_GET['nom'], $_GET['tva'], $_GET['pays']));

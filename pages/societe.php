@@ -1,16 +1,10 @@
 <?php
 try {
-	// On se connecte à MySQL
-	$bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'root', 'root');
-}
-catch(Exception $e) {
-	// En cas d'erreur, on affiche un message et on arrête tout
+	$bdd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
+} catch(Exception $e) {
     die('Erreur : '.$e->getMessage());
 }
-
-$resultat = $bd->query('SELECT * FROM societaires');
-$societaire = $resultat->fetchAll();
-$resultat = $bd->query('SELECT * FROM societe');
+$resultat = $bdd->query('SELECT * FROM societe');
 $societe = $resultat->fetchAll();
 $resultat->closeCursor();
 ?>
@@ -71,7 +65,7 @@ $resultat->closeCursor();
                                     foreach ($societe as $value) { ?>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <p> <?=$value['nom']?> </p>
+                                                <p> <a href="detailsociete.php?nomdesociete=<?=$value['nomdesociete']?>"><?=$value['nomdesociete']?></a> </p>
                                             </div>
                                         </div>
                                 <?php } ?>

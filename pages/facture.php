@@ -1,6 +1,6 @@
 <?php
 try {
-	$bdd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'elleonors', 'BEcode2019');
+	$bdd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
 } catch(Exception $e) {
         die('Erreur : '.$e->getMessage());
 }
@@ -74,7 +74,7 @@ $resultat->closeCursor();
                                     foreach ($societe as $value) { ?>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <p> <a href="detailsociete.php/<?=$value['nom']?>"><?=$value['nom']?></a> </p>        
+                                                <p> <a href="detailsociete.php?=nomdesociete<?=$value['nomdesociete']?>"><?=$value['nomdesociete']?></a> </p>        
                                             </div>
                                         </div>
                                 <?php } ?>
@@ -85,7 +85,7 @@ $resultat->closeCursor();
                                     foreach ($facture as $value) { ?>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <p> <a href="detailfacture.php/<?=$value['numero']?>"><?=$value['numero']?></a> </p>
+                                                <p> <a href="detailfacture.php?numero=<?=$value['numero']?>"><?=$value['numero']?></a> </p>
                                             </div>
                                         </div>
                                 <?php } ?>
