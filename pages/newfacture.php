@@ -4,6 +4,21 @@ try {
 } catch(Exception $e) {
     die('Erreur : '.$e->getMessage());
 }
+if(isset($_GET['add'])) {
+    $req = $bdd->prepare('INSERT INTO facture (numero, `date`, prestation, societe_idsociete, societaires_idsocietaires) VALUES (?, ?, ?, ?, ?)');
+    $req->execute(array($_GET['numero'], $_GET['date'], $_GET['presta'], $_GET['societe'], $_GET['societaires']));
+    header('Location: newfacture.php');
+}
+// On récupère le contenu de la table societe
+$resultat = $bdd->query('SELECT * FROM societe');
+while ($donnees = $resultat->fetchAll()){
+    $societe = $donnees;
+}
+// On récupère le contenu de la table societaire
+$resultat = $bdd->query('SELECT * FROM societaires');
+while ($donnees = $resultat->fetchAll()){
+    $societaires = $donnees;
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -55,8 +70,20 @@ try {
                 <div class="offset-4 col-md-4 text-center">
                     <form method="get">
                         <p>Numéro de facture: <input type="text" name="numero"/></p>
-                        <p>Date d'emmission: <input type="text" name="date"/></p>
-                        <p>Date de prestation: <input type="text" name="presta"/></p>
+                        <p>Date d'emmission: <input type="date" name="date"/></p>
+                        <p>Date de prestation: <input type="date" name="presta"/></p>
+                        <p>Société: <select name="societe">
+                        <?php
+                        foreach ($societe as $value) { ?>
+                        <option value="<?php echo $value ['idsociete'] ?>"><?php echo $value ['nom'] ?></option>
+                        <?php } ?>
+                        </select></p>
+                        <p>Sociétaire: <select name="societaires">
+                        <?php
+                        foreach ($societaires as $value) { ?>
+                        <option value="<?php echo $value ['idsocietaires'] ?>"><?php echo $value ['nom'] . ", " . $value ['prenom'] ?></option>
+                        <?php } ?>
+                        </select></p>
                         <p><input type="submit" name="add" value="Valider"/></p>
                     </form>
                 </div>

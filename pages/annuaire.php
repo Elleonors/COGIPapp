@@ -2,6 +2,7 @@
 try {
 	$bdd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
 } catch(Exception $e) {
+
     die('Erreur : '.$e->getMessage());
 }
 $resultat = $bdd->query('SELECT societaires.nom , societaires.prenom , societe.nomdesociete  FROM societaires INNER JOIN societe ON societe_idsociete = idsociete');
@@ -73,10 +74,12 @@ $resultat->closeCursor();
                             <div class="col-md-4">
                                 <h3>PRÉNOM</h3>
                                 <?php
+
                                     foreach ($result as $value) { ?>
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <p> <a href="detailcontact.php?prenom=<?=$value['prenom']?>"><?=$value['prenom']?></a> </p>
+
                                             </div>
                                         </div>
                                 <?php } ?>

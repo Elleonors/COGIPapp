@@ -1,10 +1,10 @@
 <?php
 try {
+
 	$bdd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
 } catch(Exception $e) {
     die('Erreur : '.$e->getMessage());
 }
-
 $resultat = $bdd->query('SELECT * FROM societaires ORDER BY idsocietaires DESC LIMIT 5');
 $donnees = $resultat->fetchAll();
 $societaires = $donnees;
@@ -43,7 +43,7 @@ $facture = $donnees;
                 height: 15vh;
             } #container {
                 background-color: rgba(37, 146, 120, 0.5);
-            } .container {
+            }*/ .container {
                 padding-top: 2vh;
                 margin-top: 2vh;
                 background-color: rgba(158, 204, 137, 0.6);
@@ -98,6 +98,7 @@ $facture = $donnees;
                     <div class="row">
                         <div class="offset-1 col-md-10 text-center">
                         <a href="facture.php" class="text-center"><input type="button" value="FACTURES"></a>
+                        <a href="factures.php" class="text-center"><input type="button" value="FACTURES"></a>
                         </div>
                         <?php
                         foreach ($facture as $value) { ?>
