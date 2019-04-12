@@ -1,15 +1,28 @@
 <?php
 try {
     // Se connecter à MySQL
-    $bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'root', 'root');
+    $bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
 }
 catch(Exception $e) {
     // En cas d'erreur, on affiche un message et on arrête tout
     die('Erreur : '.$e->getMessage());
 }
-// insertion du message avec une requête
-
-
+// Insertion d'un message avec une requête
+if(isset($_GET['add'])) {
+    $req = $bd->prepare('INSERT INTO facture (numero, `date`, prestation, societe_idsociete, societaires_idsocietaires) VALUES (?, ?, ?, ?, ?)');
+    $req->execute(array($_GET['numero'], $_GET['date'], $_GET['presta'], $_GET['societe'], $_GET['societaires']));
+    header('Location: newfacture.php');
+}
+// On récupère le contenu de la table societe
+$resultat = $bd->query('SELECT * FROM societe');
+while ($donnees = $resultat->fetchAll()){
+    $societe = $donnees;
+}
+// On récupère le contenu de la table societaire
+$resultat = $bd->query('SELECT * FROM societaires');
+while ($donnees = $resultat->fetchAll()){
+    $societaires = $donnees;
+}
 ?>
 
 <!DOCTYPE html>
@@ -62,8 +75,20 @@ catch(Exception $e) {
                 <div class="offset-4 col-md-4 text-center">
                     <form method="get">
                         <p>Numéro de facture: <input type="text" name="numero"/></p>
-                        <p>Date d'emmission: <input type="text" name="date"/></p>
-                        <p>Date de prestation: <input type="text" name="presta"/></p>
+                        <p>Date d'emmission: <input type="date" name="date"/></p>
+                        <p>Date de prestation: <input type="date" name="presta"/></p>
+                        <p>Société: <select name="societe">
+                        <?php
+                        foreach ($societe as $value) { ?>
+                        <option value="<?php echo $value ['idsociete'] ?>"><?php echo $value ['nom'] ?></option>
+                        <?php } ?>
+                        </select></p>
+                        <p>Sociétaire: <select name="societaires">
+                        <?php
+                        foreach ($societaires as $value) { ?>
+                        <option value="<?php echo $value ['idsocietaires'] ?>"><?php echo $value ['nom'] . ", " . $value ['prenom'] ?></option>
+                        <?php } ?>
+                        </select></p>
                         <p><input type="submit" name="add" value="Valider"/></p>
                     </form>
                 </div>

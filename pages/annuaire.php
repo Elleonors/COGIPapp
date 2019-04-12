@@ -1,7 +1,7 @@
 <?php
 try {
 	// On se connecte à MySQL
-	$bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'root', 'root');
+	$bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
 }
 catch(Exception $e) {
 	// En cas d'erreur, on affiche un message et on arrête tout
@@ -65,7 +65,7 @@ $resultat->closeCursor();
                 <div class="row text-center">
                     <div class="col-md-12">
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-4">
                                 <h3>NOM</h3>
                                 <?php
                                     foreach ($societaire as $value) { ?>
@@ -76,7 +76,7 @@ $resultat->closeCursor();
                                         </div>
                                 <?php } ?>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-4">
                                 <h3>PRÉNOM</h3>
                                 <?php
                                     foreach ($societaire as $value) { ?>
@@ -87,29 +87,7 @@ $resultat->closeCursor();
                                         </div>
                                 <?php } ?>
                             </div>
-                            <div class="col-md-3">
-                                <h3>EMAIL</h3>
-                                <?php
-                                    foreach ($societaire as $value) { ?>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <p> <?=$value['email']?> </p>
-                                            </div>
-                                        </div>
-                                <?php } ?>
-                            </div>
-                            <div class="col-md-2">
-                                <h3>TÉLÉPHONE</h3>
-                                <?php
-                                    foreach ($societaire as $value) { ?>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <p> <?=$value['telephone']?> </p>
-                                            </div>
-                                        </div>
-                                <?php } ?>
-                            </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <h3>NOM-DE-SOCIETE</h3>
                                 <?php
                                     foreach ($societe as $value) { ?>

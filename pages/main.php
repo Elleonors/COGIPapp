@@ -1,7 +1,7 @@
 <?php
 try {
 	// On se connecte à MySQL
-	$bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'root', 'root');
+	$bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
 }
 catch(Exception $e) {
 	// En cas d'erreur, on affiche un message et on arrête tout
@@ -52,10 +52,10 @@ $resultat->closeCursor();
                 background-size: cover;
             } img {
                 height: 15vh;
-            } #container {
+            } /*#container {
                 height: 40vh;
                 background-color: rgba(37, 146, 120, 0.5);
-            } .container {
+            }*/ .container {
                 padding-top: 2vh;
                 margin-top: 2vh;
                 background-color: rgba(158, 204, 137, 0.6);
@@ -110,7 +110,7 @@ $resultat->closeCursor();
                 <div class="col-md-4">
                     <div class="row">
                         <div class="offset-1 col-md-10 text-center">
-                        <a href="factures.php" target="_blank" class="text-center"><input type="button" value="FACTURES"></a>
+                        <a href="facture.php" target="_blank" class="text-center"><input type="button" value="FACTURES"></a>
                         </div>
                         <?php
                         foreach ($facture as $value) { ?>

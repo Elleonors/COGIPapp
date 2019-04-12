@@ -1,15 +1,13 @@
 <?php
 try {
 	// On se connecte à MySQL
-	$bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'root', 'root');
+	$bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
 }
 catch(Exception $e) {
 	// En cas d'erreur, on affiche un message et on arrête tout
     die('Erreur : '.$e->getMessage());
 }
 
-$resultat = $bd->query('SELECT * FROM societaires');
-$societaire = $resultat->fetchAll();
 $resultat = $bd->query('SELECT * FROM societe');
 $societe = $resultat->fetchAll();
 $resultat->closeCursor();

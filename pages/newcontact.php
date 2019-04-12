@@ -1,7 +1,7 @@
 <?php
 try {
 	// Se connecter à MySQL
-	$bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'root', 'root');
+	$bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
 }
 catch(Exception $e) {
 	// En cas d'erreur, on affiche un message et on arrête tout

@@ -1,7 +1,7 @@
 <?php
 try {
     // Se connecter à MySQL
-    $bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'root', 'root');
+    $bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
 }
 catch(Exception $e) {
     // En cas d'erreur, on affiche un message et on arrête tout
@@ -11,7 +11,22 @@ catch(Exception $e) {
 if(isset($_GET['add'])) {
     $req = $bd->prepare('INSERT INTO societe (nom, tva, pays) VALUES (?, ?, ?)');
     $req->execute(array($_GET['nom'], $_GET['tva'], $_GET['pays']));
+}
+// On récupère le contenu de la table societe
+//$req = $bd->prepare('INSERT INTO SELECT MAX(id) FROM societe');
+//while ($donnees = $resultat->fetchAll()){
+  //  $societe = $donnees;
+// }
+// Insertion d'un message avec une requête
+if(isset($_GET['add'])) {
+    $req = $bd->prepare('INSERT INTO societe_has_type (societe_idsociete, type_idtype) VALUES (?, ?)');
+    $req->execute('SELECT MAX(idsociete) FROM societe', array($_GET['type']), $societe);
     header('Location: newsociete.php');
+}
+// On récupère le contenu de la table type
+$resultat = $bd->query('SELECT * FROM `type`');
+while ($donnees = $resultat->fetchAll()){
+    $type = $donnees;
 }
 ?>
 
@@ -61,9 +76,15 @@ if(isset($_GET['add'])) {
             <div class="row">
                 <div class="offset-4 col-md-4 text-center">
                     <form method="get">
-                        <p>Societe: <input type="text" name="nom"/></p>
+                        <p>Société: <input type="text" name="nom"/></p>
                         <p>TVA: <input type="text" name="tva"/></p>
                         <p>Pays: <input type="text" name="pays"/></p>
+                        <p>Type: <select name="type">
+                        <?php
+                        foreach ($type as $value) { ?>
+                        <option value="<?php echo $value ['idtype'] ?>"><?php echo $value ['nom'] ?></option>
+                        <?php } ?>
+                        </select></p>
                         <p><input type="submit" name="add" value="Valider"/></p>
                     </form>
                 </div>
