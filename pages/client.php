@@ -1,14 +1,10 @@
 <?php
 try {
-	// On se connecte à MySQL
-	$bd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
-}
-catch(Exception $e) {
-	// En cas d'erreur, on affiche un message et on arrête tout
+	$bdd = new PDO('mysql:host=localhost;dbname=COGIP;charset=utf8', 'becode', 'becodepass');
+} catch(Exception $e) {
     die('Erreur : '.$e->getMessage());
 }
-
-$resultat = $bd->query('SELECT societe.nom, societe.pays, societe.tva FROM societe INNER JOIN societe_has_type ON idsociete = societe_idsociete WHERE type_idtype = 2');
+$resultat = $bdd->query('SELECT societe.nomdesociete, societe.pays, societe.tva FROM societe INNER JOIN societe_has_type ON idsociete = societe_idsociete WHERE type_idtype = 2');
 $societe = $resultat->fetchAll();
 $resultat->closeCursor();
 ?>
@@ -69,7 +65,7 @@ $resultat->closeCursor();
                                     foreach ($societe as $value) { ?>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <p> <?=$value['nom']?> </p>
+                                                <p> <?=$value['nomdesociete']?> </p>
                                             </div>
                                         </div>
                                 <?php } ?>

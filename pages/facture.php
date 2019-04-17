@@ -74,7 +74,7 @@ $resultat->closeCursor();
                                         foreach ($societe as $value) { ?>
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <p> <a href="detailsociete.php/<?=$value['nom']?>"><?=$value['nom']?></a> </p>        
+                                                    <p> <a href="detailsociete.php/<?=$value['nomdesociete']?>"><?=$value['nomdesociete']?></a> </p>        
                                                 </div>
                                             </div>
                                     <?php } ?>

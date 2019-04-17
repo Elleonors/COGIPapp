@@ -5,7 +5,7 @@ try {
     die('Erreur : '.$e->getMessage());
 }
 if(isset($_GET['add'])) {
-    $req = $bd->prepare('INSERT INTO societe (nom, tva, pays) VALUES (?, ?, ?)');
+    $req = $bdd->prepare('INSERT INTO societe (nom, tva, pays) VALUES (?, ?, ?)');
     $req->execute(array($_GET['nom'], $_GET['tva'], $_GET['pays']));
 }
 // On récupère le contenu de la table societe
@@ -15,12 +15,12 @@ if(isset($_GET['add'])) {
 // }
 // Insertion d'un message avec une requête
 if(isset($_GET['add'])) {
-    $req = $bd->prepare('INSERT INTO societe_has_type (societe_idsociete, type_idtype) VALUES (?, ?)');
+    $req = $bdd->prepare('INSERT INTO societe_has_type (societe_idsociete, type_idtype) VALUES (?, ?)');
     $req->execute('SELECT MAX(idsociete) FROM societe', array($_GET['type']), $societe);
     header('Location: newsociete.php');
 }
 // On récupère le contenu de la table type
-$resultat = $bd->query('SELECT * FROM `type`');
+$resultat = $bdd->query('SELECT * FROM `type`');
 while ($donnees = $resultat->fetchAll()){
     $type = $donnees;
 }
